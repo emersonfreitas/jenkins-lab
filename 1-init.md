@@ -162,18 +162,19 @@ docker run --name jenkins --restart=on-failure --detach ^
 
 ## Passo 5 — Desbloqueio Inicial (*Post-installation Setup Wizard*)
 
-1. Veja os logs do container para copiar a senha inicial de administrador:
+1. Veja os logs do container para copiar a senha inicial de administrador (entre as duas linhas de asteriscos):
    ```bash
    docker logs jenkins
    ```
-   *(Se preferir ler o arquivo diretamente de dentro do container:)*
+   *(Ou imprima o arquivo diretamente sem abrir shell interativo, conforme a doc oficial:)*
    ```bash
-   docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+   docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
    ```
 2. Abra `http://localhost:8080` no navegador.
-3. Cole a senha exibida no log (**Unlock Jenkins**).
-4. Em **Customize Jenkins**, escolha **Install suggested plugins** (bom ponto de partida para o laboratório).
-5. Crie o primeiro usuário administrador em **Create First Admin User**.
+3. Na tela **Unlock Jenkins**, cole a senha no campo **Administrator password** e clique em **Continue**.
+4. Em **Customize Jenkins**, escolha **Install suggested plugins** (ou **Select plugins to install** para escolher manualmente).
+5. Em **Create First Admin User**, preencha os dados do administrador e clique em **Save and Finish**.
+6. Na tela **Jenkins is ready**, clique em **Start using Jenkins** *(se aparecer **Jenkins is almost ready!**, clique em **Restart**)*.
 
 ---
 
