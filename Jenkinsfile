@@ -1,12 +1,13 @@
 pipeline {
-    agent any
-
-    tools {
-        nodejs 'NodeLTS'
+    agent {
+        docker {
+            image 'node:26-alpine'
+        }
     }
 
     environment {
         CI = 'true'
+        NPM_CONFIG_CACHE = '/tmp/.npm'
     }
 
     stages {
